@@ -1,0 +1,23 @@
+{
+  "name": "gestione-ore-cantieri",
+  "version": "1.2.0",
+  "description": "Sistema multi-tenant per la gestione ore lavorative e cantieri",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx http-server . -p 3000 -c-1",
+    "start": "npx http-server . -p 8080 -c-1",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "time-tracking",
+    "work-hours", 
+    "construction",
+    "firebase",
+    "bootstrap"
+  ],
+  "dependencies": {
+    "http-server": "^14.1.1",
+    "xlsx": "^0.18.5"
+  }
+}

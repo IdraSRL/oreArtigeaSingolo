@@ -760,6 +760,7 @@ class AdminService {
         };
         
         cantiere.minutiEffettivi = cantiere.minuti * cantiere.persone;
+        cantiere.minutiEffettivi = Math.round(cantiere.minuti / cantiere.persone);
         
         this.currentEmployeeData.dayData.attivita = this.currentEmployeeData.dayData.attivita || [];
         this.currentEmployeeData.dayData.attivita.push(cantiere);
@@ -783,7 +784,7 @@ class AdminService {
             minuti: minuti,
             persone: 1,
             tipo: 'pst',
-            minutiEffettivi: minuti
+            minutiEffettivi: Math.round(minuti / 1)
         };
         
         this.currentEmployeeData.dayData.attivita = this.currentEmployeeData.dayData.attivita || [];
@@ -800,13 +801,13 @@ class AdminService {
             const minuti = parseInt(value);
             if (validateMinutes(minuti)) {
                 activities[index].minuti = minuti;
-                activities[index].minutiEffettivi = minuti * activities[index].persone;
+                activities[index].minutiEffettivi = Math.round(minuti / activities[index].persone);
             }
         } else if (field === 'persone') {
             const persone = parseInt(value);
             if (validatePersone(persone)) {
                 activities[index].persone = persone;
-                activities[index].minutiEffettivi = activities[index].minuti * persone;
+                activities[index].minutiEffettivi = Math.round(activities[index].minuti / persone);
             }
         }
         

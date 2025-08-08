@@ -218,7 +218,7 @@ class TimeEntryService {
                 nome: cantiere.name,
                 minuti: cantiere.minutes,
                 persone: persone,
-                minutiEffettivi: cantiere.minutes * persone,
+                minutiEffettivi: Math.round(cantiere.minutes / persone),
                 tipo: 'cantiere'
             };
 
@@ -278,7 +278,7 @@ class TimeEntryService {
                 nome: nome,
                 minuti: minuti,
                 persone: persone,
-                minutiEffettivi: minuti * persone,
+                minutiEffettivi: Math.round(minuti / persone),
                 tipo: 'pst'
             };
 
@@ -315,7 +315,7 @@ class TimeEntryService {
             const minuti = parseInt(value);
             if (validateMinutes(minuti)) {
                 activity.minuti = minuti;
-                activity.minutiEffettivi = minuti * activity.persone;
+                activity.minutiEffettivi = Math.round(minuti / activity.persone);
                 this.updateUI();
                 this.debouncedSave();
             }
@@ -323,7 +323,7 @@ class TimeEntryService {
             const persone = parseInt(value);
             if (validatePersone(persone)) {
                 activity.persone = persone;
-                activity.minutiEffettivi = activity.minuti * persone;
+                activity.minutiEffettivi = Math.round(activity.minuti / persone);
                 this.updateUI();
                 this.debouncedSave();
             }
